@@ -397,5 +397,15 @@ int Solution::maxValue(int n, int index, int maxSum) {
         }
     }
     return opt;
+}
 
+int Solution::reverse(int x){
+    int maxNum = INT_MAX / 10;
+    int ans = 0;
+    while (x){
+        if (abs(ans) > maxNum)   return 0;
+        ans = ans * 10 + (x % 10);
+        x /= 10;
+    }
+    return ans;
 }

@@ -81,6 +81,10 @@ public:
     int getNumberOfBackOrders(std::vector<std::vector<int> >& orders);
 
     int maxValue(int n, int index, int maxSum);
+
+    // LeetCode 7, Reverse Integer
+    // https://leetcode.com/problems/reverse-integer/
+    int reverse(int x);
 };
 
 #endif // SOLUTION_H
