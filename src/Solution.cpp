@@ -315,10 +315,29 @@ TreeNode* Solution::invertTree(TreeNode* root){
     return root;
 }
 
-ListNode* Solution::reverseBetween(ListNode* head, int left, int right){
-
+ListNode* Solution::reverseK(ListNode* head, int k){
+    ListNode *tail = head;
+    while (k){
+        ListNode* cur = tail->next;
+        tail->next = tail->next->next;
+        cur->next = head;
+        head = cur;
+        k--;
+    }
+    return head;
 }
 
+ListNode* Solution::reverseBetween(ListNode* head, int left, int right){
+    if (left == 1)  return reverseK(head, right - left);
+    int k = 2;
+    ListNode *cur = head;
+    while (k < left){
+        cur = cur->next;
+        k++;
+    }
+    cur->next = reverseK(cur->next, right-left);
+    return head;
+}
 
 int Solution::getNumberOfBackOrders(std::vector<std::vector<int> >& orders){
     std::map<int, int,std::greater<int> > buyOrders; // from large to small
@@ -375,7 +394,6 @@ int Solution::getNumberOfBackOrders(std::vector<std::vector<int> >& orders){
 
     return count;
 }
-
 
 int Solution::maxValue(int n, int index, int maxSum) {
     int left = 0, right = maxSum, opt = 0;

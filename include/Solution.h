@@ -76,6 +76,7 @@ public:
 
     // LeetCode 92, Reverse Linked List II
     // https://leetcode.com/problems/reverse-linked-list-ii/
+    ListNode* reverseK(ListNode* head, int k);
     ListNode* reverseBetween(ListNode* head, int left, int right);
 
     int getNumberOfBackOrders(std::vector<std::vector<int> >& orders);
