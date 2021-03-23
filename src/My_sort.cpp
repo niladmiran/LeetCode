@@ -58,8 +58,40 @@ void quickSort(T arr[], int left, int right){
     quickSort(arr, left + 1, right);
 }
 
-// heap sort
 
+// merge sort
+// devide the array into two part with the same length, make them sorted
+// then merge these two sorted parts
+template<class T>
+void merge(T arr[], int left, int mid, int right){
+    int n1 = mid - left + 1;
+    int n2 = right - mid;
+
+    T larr[n1], rarr[n2];
+    for (int i = 0; i < n1; ++i)  larr[i] = arr[left + i];
+    for (int i = 0; i < n2; ++i)   rarr[i] = arr[mid + 1 + i];
+
+    int i = 0, j = 0, k = left;
+    while (i < n1 && j < n2){
+        if (larr[i] <= rarr[j])     arr[k++] = larr[i++];
+        else arr[k++] = rarr[j++];
+    }
+    while (i < n1)  arr[k++] = larr[i++];
+    while (j < n2)  arr[k++] = rarr[j++];
+}
+
+template<class T>
+void mergeSort(T arr[], int left, int right){
+    if (left < right){
+        int mid = left + (right - left) / 2;
+        mergeSort(arr, 0, mid);
+        mergeSort(arr, mid + 1, right);
+        merge(arr, left, mid, right);
+    }
+}
+
+
+// heap sort
 template<class T>
 void MinSort(T arr[], int i, int n){
     int j = 2 * i + 1; // find the left child of the current node
