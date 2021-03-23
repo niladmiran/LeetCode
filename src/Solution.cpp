@@ -396,17 +396,16 @@ int Solution::getNumberOfBackOrders(std::vector<std::vector<int> >& orders){
 }
 
 int Solution::maxValue(int n, int index, int maxSum) {
+    maxSum -= n;
     int left = 0, right = maxSum, opt = 0;
     long long sum;
     while (left <= right){
         sum = 0LL;
         int mid = (right + left) / 2;
-        int leftEnd = std::max(mid - index, 1);
-        int rightEnd = std::max(mid - (n - 1 - index), 1);
-        sum += (mid + leftEnd) * (mid - leftEnd + 1) / 2;
-        sum += (mid + rightEnd) * (mid - rightEnd + 1) / 2;
-        sum += std::max(0, index + 1 - (mid - leftEnd + 1));
-        sum += std::max(0, n - index - (mid - rightEnd + 1));
+        int leftEnd = std::max(mid - index, 0);
+        int rightEnd = std::max(mid - (n - 1 - index), 0);
+        sum += 1LL * (mid + leftEnd) * (mid - leftEnd + 1) / 2;
+        sum += 1LL * (mid + rightEnd) * (mid - rightEnd + 1) / 2;
         if (sum - mid <= maxSum){
             opt = std::max(opt, mid);
             left = mid + 1;
@@ -414,7 +413,7 @@ int Solution::maxValue(int n, int index, int maxSum) {
             right = mid - 1;
         }
     }
-    return opt;
+    return opt + 1;
 }
 
 int Solution::reverse(int x){
