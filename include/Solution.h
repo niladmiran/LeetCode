@@ -62,10 +62,6 @@ public:
     // https://leetcode.com/problems/kth-largest-element-in-an-array/
     int findKthLargest(std::vector<int>& nums, int k);
 
-    // LeetCode 1, Two Sum
-    // https://leetcode.com/problems/two-sum/
-    std::vector<int> twoSum(std::vector<int>& nums, int target);
-
     // LeetCode 121. Best Time to Buy and Sell Stock
     // https://leetcode.com/problems/best-time-to-buy-and-sell-stock/
     int maxProfit(std::vector<int>& prices);
