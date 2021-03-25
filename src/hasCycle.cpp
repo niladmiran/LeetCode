@@ -4,6 +4,7 @@
 
 #include "ListNode.cpp"
 
+// https://leetcode.com/explore/featured/card/top-interview-questions-easy/93/linked-list/773/
 
 bool hasCycle(ListNode *head) {
     if (!head || !head->next)   return false;
