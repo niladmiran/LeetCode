@@ -4,7 +4,6 @@
 #include <vector>
 #include <string>
 
-#include "ListNode.h"
 #include "TreeNode.h"
 
 class Solution
