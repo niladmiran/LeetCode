@@ -42,17 +42,11 @@ public:
     // http://cxsjsxmooc.openjudge.cn/2021t2springall/001/
     int passwordLock(std::string & initial, std::string & goal);
 
-    // LeetCode 91, Reverse Linked List
-    // https://leetcode.com/problems/reverse-linked-list/
-    ListNode* reverseList(ListNode* head);
 
     // LeetCOde, Valid Parentheses
     // https://leetcode.com/problems/valid-parentheses/
     bool isValid(std::string s);
 
-    // LeetCode Merge Two Sorted Lists
-    // https://leetcode.com/problems/merge-two-sorted-lists/
-    ListNode* mergeTwoLists(ListNode* l1, ListNode* l2);
 
     // LeetCode 88, Merge Sorted Array
     // https://leetcode.com/problems/merge-sorted-array/
