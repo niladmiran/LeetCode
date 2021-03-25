@@ -274,21 +274,7 @@ int Solution::findKthLargest(std::vector<int>& nums, int k){
     return *(result.begin());
 }
 
-std::vector<int> Solution::twoSum(std::vector<int>& nums, int target){
-    std::map<int, int> hash;
-    std::vector<int> result;
-    int sz = nums.size();
-    for (int i = 0; i < sz; ++i) {
-        if (hash.find(nums[i]) == hash.end())
-            hash[target - nums[i]] = i;
-        else{
-            result.push_back(hash[nums[i]]);
-            result.push_back(i);
-            break;
-        }
-    }
-    return result;
-}
+
 
 int Solution::maxProfit(std::vector<int>& prices){
     int sz = prices.size();
