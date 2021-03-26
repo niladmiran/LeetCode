@@ -1,4 +1,3 @@
-#include "../include/Solution.h"
 
 #include <vector>
 #include <string>
@@ -7,14 +6,13 @@
 #include <set>
 #include <map>
 
-#include "../include/ListNode.h"
-#include "../include/TreeNode.h"
+#include "ListNode.cpp"
+#include "TreeNode.cpp"
 
-int Solution::coinChange(std::vector<int> &coins, int amount)
-{
+int coinChange(std::vector<int> &coins, int amount) {
     int numCoins = coins.size();
     // result[i], the least number of coins we need to make up to money i.
-    std::vector<int> results(amount+1, amount+1);
+    std::vector<int> results(amount + 1, amount + 1);
 
     results[0] = 0;
     for (int money = 1; money < amount + 1; ++money) {
@@ -26,14 +24,13 @@ int Solution::coinChange(std::vector<int> &coins, int amount)
     return results[amount] < amount+1 ? results[amount] : -1;
 }
 
-ListNode* Solution::rotateRight(ListNode* head, int k) {
-    if (k == 0 || head == nullptr)  return head;
+ListNode *rotateRight(ListNode *head, int k) {
+    if (k == 0 || head == nullptr) return head;
     int size = 0; // length of the linked list
 
     // calculate the length of the linklist
     ListNode *p = head;
-    while (p != nullptr)
-    {
+    while (p != nullptr) {
         size++;
         p = p->next;
     }
@@ -61,15 +58,14 @@ ListNode* Solution::rotateRight(ListNode* head, int k) {
     return head;
 }
 
-void Solution::wiggleSort(std::vector<int>& nums) {
+void wiggleSort(std::vector<int> &nums) {
     std::vector<int> temp = nums;
     int sz = nums.size();
     int mid = (sz + 1) / 2;
     int reverse_it = sz;
     std::sort(temp.begin(), temp.end());
     // exchange the first part of the array and the second part array
-    for (int i = 0; i < sz; ++i)
-    {
+    for (int i = 0; i < sz; ++i) {
         if (i % 2)
             nums[i] = temp[--reverse_it];
         else
@@ -78,7 +74,7 @@ void Solution::wiggleSort(std::vector<int>& nums) {
 }
 
 
-std::vector<int> Solution::rotateLeft(int d, std::vector<int> arr){
+std::vector<int> rotateLeft(int d, std::vector<int> arr) {
     // given a vector, shift each of the array's element 1 unit to the left
     for (int i = 0; i < d; ++i) {
         arr.push_back(arr[0]);
@@ -87,8 +83,7 @@ std::vector<int> Solution::rotateLeft(int d, std::vector<int> arr){
     return arr;
 }
 
-int Solution::lengthOfLIS(std::vector<int>& nums)
-{
+int lengthOfLIS(std::vector<int> &nums) {
     int sz = nums.size();
     int maxLength = 1;
     // result[i] is the max length of the increasing subsequence that ending with nums[i]
@@ -103,14 +98,14 @@ int Solution::lengthOfLIS(std::vector<int>& nums)
     return maxLength;
 }
 
-std::string Solution::pangrams(std::string s) {
+std::string pangrams(std::string s) {
     std::vector<bool> result(26, false);
     int count = 0;
     int ind = 0;
-    for(auto ch: s){
+    for (auto ch: s) {
         if (ch == ' ') continue;
         ind = (ch - 'a' >= 0 ? ch - 'a' : ch - 'A');
-        if (!result[ind]){
+        if (!result[ind]) {
             result[ind] = true;
             count++;
         }
@@ -124,7 +119,7 @@ void flip(char & c){
     c ^= 1;
 }
 
-int Solution::passwordLock(std::string & initial, std::string & goal){
+int passwordLock(std::string &initial, std::string &goal) {
     int sz = initial.size();
     if (sz == 1) return initial[0] == goal[0] ? 0 : 1;
     int count;
@@ -134,7 +129,7 @@ int Solution::passwordLock(std::string & initial, std::string & goal){
         count = 0;
         char c = '0' + i;
         std::string temp(initial);
-        if (temp[0] != c){
+        if (temp[0] != c) {
             flip(temp[0]);
             flip(temp[1]);
             count++;
@@ -162,71 +157,15 @@ int Solution::passwordLock(std::string & initial, std::string & goal){
     return best <= sz ? best : -1;
 }
 
-ListNode* Solution::reverseList(ListNode* head){
-    ListNode *current = head;
-    ListNode *pre = nullptr, *nxt;
-    while (current){
-        // store the next node
-        nxt = current->next;
 
-        // reverse the current node
-        current->next = pre;
-
-        // update the new head
-        pre = current;
-
-        // update the current node
-        current = nxt;
-    }
-
-    return pre;
-}
-
-bool Solution::isValid(std::string s){
-    std::stack<char> result;
-    int sz = s.size();
-    for (int i = 0; i < sz; ++i) {
-        if (result.empty())
-            result.push(s[i]);
-        else if (result.top() == '(' && s[i] == ')' ||
-            result.top() == '[' && s[i] == ']' ||
-            result.top() == '{' && s[i] == '}')
-            result.pop();
-        else
-            result.push(s[i]);
-    }
-    if (result.empty())
-        return true;
-    return false;
-}
-
-ListNode* Solution::mergeTwoLists(ListNode* l1, ListNode* l2){
-    ListNode *head = new ListNode(0);
-    ListNode *p3 = head;
-    while (l1 && l2){
-        if (l1->val < l2->val) {
-            p3->next = l1;
-            p3 = l1;
-            l1 = l1->next;
-        }else{
-            p3->next = l2;
-            p3 = l2;
-            l2 = l2->next;
-        }
-    }
-    p3->next = l1 ? l1 : l2;
-
-    return head->next;
-}
-
-void Solution::merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, int n){
+void merge(std::vector<int> &nums1, int m, std::vector<int> &nums2, int n) {
     int i = m, j = n;
     // insert the element in reverse order
-    while (i && j){
-        if (nums1[i - 1] < nums2[j - 1]){
+    while (i && j) {
+        if (nums1[i - 1] < nums2[j - 1]) {
             nums1[i + j - 2] = nums2[j - 1];
             j--;
-        }else{
+        } else {
             nums1[i + j - 2] = nums1[j - 1];
             i--;
         }
@@ -238,16 +177,16 @@ void Solution::merge(std::vector<int>& nums1, int m, std::vector<int>& nums2, in
     }
 }
 
-int Solution::findKthLargest(std::vector<int>& nums, int k){
+int findKthLargest(std::vector<int> &nums, int k) {
     // always maintain the largest k numbers.
     int sz = nums.size();
     std::multiset<int> result;
     for (int i = 0; i < sz; ++i) {
-        if (i < k)  result.insert(nums[i]);
-        else{
+        if (i < k) result.insert(nums[i]);
+        else {
             auto iterSmallest = result.begin();
             // if we find a larger number, update curent result
-            if (nums[i] > *(result.begin())){
+            if (nums[i] > *(result.begin())) {
                 result.erase(iterSmallest);
                 result.insert(nums[i]);
             }
@@ -257,24 +196,10 @@ int Solution::findKthLargest(std::vector<int>& nums, int k){
 }
 
 
-
-int Solution::maxProfit(std::vector<int>& prices){
-    int sz = prices.size();
-    int minPrice = prices[0];
-    int maxProfit = 0;
-    for (int i = 0; i < sz; ++i){
-        if (prices[i] < minPrice)
-            minPrice = prices[i];
-        if (maxProfit < prices[i] - minPrice)
-            maxProfit = prices[i] - minPrice;
-    }
-    return maxProfit;
-}
-
-TreeNode* Solution::invertTree(TreeNode* root){
+TreeNode *invertTree(TreeNode *root) {
     if (root == nullptr)
         return nullptr;
-    TreeNode* temp = root->left;
+    TreeNode *temp = root->left;
     root->left = root->right;
     root->right = temp;
     invertTree(root->left);
@@ -283,10 +208,10 @@ TreeNode* Solution::invertTree(TreeNode* root){
     return root;
 }
 
-ListNode* Solution::reverseK(ListNode* head, int k){
+ListNode *reverseK(ListNode *head, int k) {
     ListNode *tail = head;
-    while (k){
-        ListNode* cur = tail->next;
+    while (k) {
+        ListNode *cur = tail->next;
         tail->next = tail->next->next;
         cur->next = head;
         head = cur;
@@ -295,20 +220,20 @@ ListNode* Solution::reverseK(ListNode* head, int k){
     return head;
 }
 
-ListNode* Solution::reverseBetween(ListNode* head, int left, int right){
-    if (left == 1)  return reverseK(head, right - left);
+ListNode *reverseBetween(ListNode *head, int left, int right) {
+    if (left == 1) return reverseK(head, right - left);
     int k = 2;
     ListNode *cur = head;
-    while (k < left){
+    while (k < left) {
         cur = cur->next;
         k++;
     }
-    cur->next = reverseK(cur->next, right-left);
+    cur->next = reverseK(cur->next, right - left);
     return head;
 }
 
-int Solution::getNumberOfBackOrders(std::vector<std::vector<int> >& orders){
-    std::map<int, int,std::greater<int> > buyOrders; // from large to small
+int getNumberOfBackOrders(std::vector<std::vector<int> > &orders) {
+    std::map<int, int, std::greater<int> > buyOrders; // from large to small
     std::map<int, int> sellOrders; // from small to large
     int count = 0;
     int sz = orders.size();
@@ -363,11 +288,11 @@ int Solution::getNumberOfBackOrders(std::vector<std::vector<int> >& orders){
     return count;
 }
 
-int Solution::maxValue(int n, int index, int maxSum) {
+int maxValue(int n, int index, int maxSum) {
     maxSum -= n;
     int left = 0, right = maxSum, opt = 0;
     long long sum;
-    while (left <= right){
+    while (left <= right) {
         sum = 0LL;
         int mid = (right + left) / 2;
         int leftEnd = std::max(mid - index, 0);
