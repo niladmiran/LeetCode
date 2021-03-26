@@ -77,24 +77,6 @@ void Solution::wiggleSort(std::vector<int>& nums) {
     }
 }
 
-void MidOrder(TreeNode* root, std::vector<int>& vals){
-    if (root != nullptr){
-        MidOrder(root->left, vals);
-        vals.push_back(root->val);
-        MidOrder(root->right, vals);
-    }
-}
-
-bool Solution::isValidBST(TreeNode* root){
-    std::vector<int> vals;
-    MidOrder(root, vals);
-    int nums_nodes = vals.size();
-    for (int i = 0; i < nums_nodes - 1; ++i){
-        if (vals[i] >= vals[i + 1])
-            return false;
-    }
-    return true;
-}
 
 std::vector<int> Solution::rotateLeft(int d, std::vector<int> arr){
     // given a vector, shift each of the array's element 1 unit to the left

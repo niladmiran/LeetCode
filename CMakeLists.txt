@@ -3,4 +3,4 @@ project(LeetCode)
 
 set(CMAKE_CXX_STANDARD 14)
 
-add_executable(LeetCode main.cpp src/Solution.cpp include/Solution.h src/My_sort.cpp src/TreeNode.cpp include/TreeNode.h src/ListNode.cpp include/ListNode.h src/Useful_function.cpp src/climbStairs.cpp src/maxProfit.cpp src/maximumSubarray.cpp src/rob.cpp src/removeDuplicates.cpp src/maxProfitII.cpp src/rotate.cpp src/reverseString.cpp src/reverseInt.cpp src/rotateArray.cpp src/isAnagram.cpp)
+add_executable(LeetCode main.cpp src/Solution.cpp include/Solution.h src/My_sort.cpp src/TreeNode.cpp include/TreeNode.h src/ListNode.cpp src/Useful_function.cpp src/climbStairs.cpp src/maxProfit.cpp src/maximumSubarray.cpp src/rob.cpp src/removeDuplicates.cpp src/maxProfitII.cpp src/rotate.cpp src/reverseString.cpp src/reverseInt.cpp src/rotateArray.cpp src/isAnagram.cpp src/deleteNode.cpp src/maxDepth.cpp src/isValidBST.cpp src/levelOrder.cpp)
