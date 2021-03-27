@@ -73,7 +73,6 @@ void wiggleSort(std::vector<int> &nums) {
     }
 }
 
-
 std::vector<int> rotateLeft(int d, std::vector<int> arr) {
     // given a vector, shift each of the array's element 1 unit to the left
     for (int i = 0; i < d; ++i) {
