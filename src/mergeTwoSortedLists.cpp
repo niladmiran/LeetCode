@@ -32,3 +32,25 @@ ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
     }
     return dummyHead->next;
 }
+
+//
+// Created by jacob on 2021/3/27.
+//
+
+
+// recursive method
+// https://leetcode.com/explore/learn/card/recursion-i/253/conclusion/2382/
+
+ListNode* mergeTwoLists(ListNode* l1, ListNode* l2, int k) {
+    if (!l1)    return l2;
+    if (!l2)    return l1;
+    ListNode* newHead;
+    if (l1->val < l2->val){
+        newHead = l1;
+        newHead->next = mergeTwoLists(l1->next, l2, k);
+    }else{
+        newHead = l2;
+        newHead->next = mergeTwoLists(l1, l2->next, k);
+    }
+    return newHead;
+}
