@@ -18,3 +18,13 @@ ListNode* reverseList(ListNode* head) {
     }
     return prev;
 }
+
+
+// recursive way
+ListNode* reverseList(ListNode* head, int k) {
+    if (!head || !head->next)  return head;
+    ListNode* newHead = reverseList(head->next, k);
+    head->next->next = head;
+    head->next = nullptr;
+    return newHead;
+}
