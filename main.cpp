@@ -1,14 +1,14 @@
-#include <iostream>
-#include <string>
+// maze problem
+// http://poj.org/problem?id=3984
+
 #include <vector>
+#include <iostream>
+#include <stack>
 
 using namespace std;
 
 
-
 int main(int argc, char const *argv[]) {
-
-    cout << countAndSay(5) << endl;
-
+    cout << "hello world" << endl;
     return 0;
 }
